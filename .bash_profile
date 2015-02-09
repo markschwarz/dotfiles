@@ -33,10 +33,11 @@ fi
 
 
 # --- Audit
-export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+# export HISTCONTROL=ignoredups:erasedups  # no duplicate entries -- if you do this, it causes history to align !99 style commands unhelpfully
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 shopt -s histappend                      # append to history, don't overwrite it
+export HISTTIMEFORMAT='%F %T '
 
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
@@ -51,7 +52,7 @@ ENV=/mnt/env
 PYTHON_BIN=$ENV/python26/bin/
 PATH=$PYTHON_BIN:$PATH:$HOME/bin
 export PATH
-
+export TZ='/usr/share/zoneinfo/US/Central'
 # --- Reminderscripts
 
 
