@@ -56,14 +56,15 @@ export PATH
 export TZ='/usr/share/zoneinfo/US/Central'
 
 # Assumes Python virtualenvwrapper is installed.
-export WORKON_HOME=/opt/virtualenvs # needed for virtualenvwrapper
+export WORKON_HOME=~/.virtualenvs # needed for virtualenvwrapper
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 source /usr/local/bin/virtualenvwrapper.sh
 #--- Reminderscripts
 
 
 # --- Form-Beauty
-
+export CLICOLOR=1 # Mac colors for ls command
 hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1}END{print 30 + (total % 6)}')
-PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\[\e[${hostnamecolor}m\]\]\h (`basename ${VIRTUAL_EN-""}`) \[\e[32m\]\w\[\e[0m\]\n$ '
+PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\[\e[${hostnamecolor}m\]\]\h (`basename ${VIRTUAL_ENV-""}`) \[\e[32m\]\w\[\e[0m\]\n$ '
 
+PATH=/opt/local/bin:$PATH
