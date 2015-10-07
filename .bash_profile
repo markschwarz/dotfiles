@@ -48,16 +48,22 @@ alias git-stash-v='git stash list --format="%gd %cr %ae %h %s"'
 alias ec2-get-instance-name='curl -s http://169.254.169.254/latest/meta-data/instance-id'
 alias di='aws ec2 describe-instances --instance-id=`ec2-get-instance-name`'
 
+
 ENV=/mnt/env
 PYTHON_BIN=$ENV/python26/bin/
 PATH=$PYTHON_BIN:$PATH:$HOME/bin
 export PATH
 export TZ='/usr/share/zoneinfo/US/Central'
-# --- Reminderscripts
+
+# Assumes Python virtualenvwrapper is installed.
+export WORKON_HOME=/opt/virtualenvs # needed for virtualenvwrapper
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+source /usr/local/bin/virtualenvwrapper.sh
+#--- Reminderscripts
 
 
 # --- Form-Beauty
 
 hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1}END{print 30 + (total % 6)}')
-PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\[\e[${hostnamecolor}m\]\]\h \[\e[32m\]\w\[\e[0m\]\n$ '
+PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\[\e[${hostnamecolor}m\]\]\h (`basename ${VIRTUAL_EN-""}`) \[\e[32m\]\w\[\e[0m\]\n$ '
 
