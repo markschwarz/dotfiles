@@ -68,3 +68,6 @@ hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1}END{print
 PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\[\e[${hostnamecolor}m\]\]\h (`basename ${VIRTUAL_ENV-""}`) \[\e[32m\]\w\[\e[0m\]\n$ '
 
 PATH=/opt/local/bin:$PATH
+
+source ~/.bash_profile_site_specific
+
