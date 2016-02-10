@@ -50,15 +50,15 @@ alias di='aws ec2 describe-instances --instance-id=`ec2-get-instance-name`'
 
 
 ENV=/mnt/env
-#PYTHON_BIN=$ENV/python26/bin/
-#PATH=$PYTHON_BIN:$PATH:$HOME/bin
 PATH=$PATH:$HOME/scripts
+PYTHON_BIN=$ENV/python26/bin/
+PATH=$PYTHON_BIN:$PATH:$HOME/bin:$HOME/scripts
 export PATH
 export TZ='/usr/share/zoneinfo/US/Central'
 
 # Assumes Python virtualenvwrapper is installed.
 export WORKON_HOME=~/.virtualenvs # needed for virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+export VIRTUALENVWRAPPER_PYTHON=~/.virtualenvs/python27VENV/bin/python
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -71,9 +71,24 @@ export CLICOLOR=1 # Mac colors for ls command
 hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1}END{print 30 + (total % 6)}')
 PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\[\e[${hostnamecolor}m\]\]\h (`basename ${VIRTUAL_ENV-""}`) \[\e[32m\]\w\[\e[0m\]\n$ '
 
+man() {
+    env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    man "$@"
+    }
+
+
 PATH=/opt/local/bin:$PATH
 
 source ~/.bash_profile_site_specific
 
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
