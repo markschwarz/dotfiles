@@ -50,13 +50,17 @@ alias di='aws ec2 describe-instances --instance-id=`ec2-get-instance-name`'
 
 
 ENV=/mnt/env
-PYTHON_BIN=$ENV/python26/bin/
-PATH=$PYTHON_BIN:$PATH:$HOME/bin
+#PYTHON_BIN=$ENV/python26/bin/
+#PATH=$PYTHON_BIN:$PATH:$HOME/bin
+PATH=$PATH:$HOME/scripts
 export PATH
 export TZ='/usr/share/zoneinfo/US/Central'
 
 # Assumes Python virtualenvwrapper is installed.
 export WORKON_HOME=~/.virtualenvs # needed for virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 source /usr/local/bin/virtualenvwrapper.sh
 #--- Reminderscripts
@@ -71,3 +75,5 @@ PATH=/opt/local/bin:$PATH
 
 source ~/.bash_profile_site_specific
 
+
+test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
