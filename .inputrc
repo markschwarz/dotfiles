@@ -1,0 +1,4 @@
+set editing-mode vi
+set keymap vi-command
+# run the following line from http://vim.wikia.com/wiki/Use_vi_shortcuts_in_terminal to see key mappings in insert mode
+# bind -p | grep -v '^#\|self-insert\|^$

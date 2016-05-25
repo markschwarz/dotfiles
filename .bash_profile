@@ -1,4 +1,5 @@
 # .bash_profile
+#set -x
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
@@ -42,12 +43,15 @@ export HISTTIMEFORMAT='%F %T '
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+# Correct behavior with crontab
+export EDITOR=vim
+
 # --- Function-Convenience
 # Added in .bashrc -- . /mnt/data_dev/Datawarehouse/Keyfiles/user_environment_variable_setup.sh
 alias git-stash-v='git stash list --format="%gd %cr %ae %h %s"'
 alias ec2-get-instance-name='curl -s http://169.254.169.254/latest/meta-data/instance-id'
 alias di='aws ec2 describe-instances --instance-id=`ec2-get-instance-name`'
-
+alias jup='cd ~/notebooks;jupyter notebook'
 
 ENV=/mnt/env
 PATH=$PATH:$HOME/scripts
@@ -84,11 +88,22 @@ man() {
     }
 
 
-PATH=/opt/local/bin:$PATH
+#PATH=/opt/local/bin:$PATH
 
 source ~/.bash_profile_site_specific
 
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
+#test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
+
+# pip bash completion start
+_pip_completion()
+{
+    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+                   COMP_CWORD=$COMP_CWORD \
+                   PIP_AUTO_COMPLETE=1 $1 ) )
+}
+complete -o default -F _pip_completion pip
+# pip bash completion end
+
