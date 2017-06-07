@@ -64,7 +64,7 @@ export TZ='/usr/share/zoneinfo/US/Central'
 
 # Assumes Python virtualenvwrapper is installed.
 export WORKON_HOME=~/.virtualenvs # needed for virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=~/.virtualenvs/python27_DS/bin/python
+export VIRTUALENVWRAPPER_PYTHON=~/.virtualenvs/py3_virtualenvwrapper/bin/python
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export VIRTUAL_ENV_DISABLE_PROMPT=1

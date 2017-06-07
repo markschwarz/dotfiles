@@ -83,3 +83,5 @@ fpath=(~/github/gcloud-zsh-completion/src $fpath)
 
 autoload -U compinit compdef
 compinit
+
+alias vim='vim -w ~/.vimlog "$@"' # http://www.drbunsen.org/vim-croquet/
