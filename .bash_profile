@@ -54,6 +54,7 @@ alias git-stash-v='git stash list --format="%gd %cr %ae %h %s"'
 alias ec2-get-instance-name='curl -s http://169.254.169.254/latest/meta-data/instance-id'
 alias di='aws ec2 describe-instances --instance-id=`ec2-get-instance-name`'
 alias jup='cd ~/notebooks;jupyter notebook'
+alias svim='vim -u ~/.vim/essential.vim'
 
 ENV=/mnt/env
 PATH=$PATH:$HOME/scripts

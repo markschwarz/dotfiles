@@ -8,9 +8,10 @@ source /usr/local/share/zsh/site-functions/_aws
 export REPORTTIME=10
 alias jup='cd ~/notebooks;jupyter notebook'
 alias j='jupyter console'
-alias glances='glances --enable-history --process-short-name'
+alias glances='glances --process-short-name'
 alias history='history 1'
 alias mail='mutt'
+alias svim='vim -u ~/.vim/essential.vim'
 
 export PYTHONPATH=$RIGHTIMPORT/sqrt_lib:$RIGHTIMPORT/PyLib:$RIGHTIMPORT:/sqrt_utilities
 
@@ -85,3 +86,4 @@ autoload -U compinit compdef
 compinit
 
 alias vim='vim -w ~/.vimlog "$@"' # http://www.drbunsen.org/vim-croquet/
+fpath=(~/.zsh.completion $fpath)
