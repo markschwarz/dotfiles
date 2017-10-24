@@ -12,6 +12,7 @@ alias glances='glances --process-short-name'
 alias history='history 1'
 alias mail='mutt'
 alias svim='vim -u ~/.vim/essential.vim'
+alias sview='view -u ~/.vim/essential.vim'
 
 export PYTHONPATH=$RIGHTIMPORT/sqrt_lib:$RIGHTIMPORT/PyLib:$RIGHTIMPORT:/sqrt_utilities
 
@@ -87,3 +88,7 @@ compinit
 
 alias vim='vim -w ~/.vimlog "$@"' # http://www.drbunsen.org/vim-croquet/
 fpath=(~/.zsh.completion $fpath)
+
+#miniconda
+export PATH="$PATH:$HOME/miniconda3/bin"
+. ~/.machine_names_and_other_lists.sh
