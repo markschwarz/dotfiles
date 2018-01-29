@@ -1,8 +1,6 @@
 
-workon python27_DS
-
-unalias run-help
-autoload run-help
+autoload -U run-help # mschwarz ref http://zshwiki.org/home/builtin/functions/run-help
+autoload run-help-git
 bindkey '^[h' run-help
 source /usr/local/share/zsh/site-functions/_aws
 export REPORTTIME=10
@@ -91,4 +89,4 @@ fpath=(~/.zsh.completion $fpath)
 
 #miniconda
 export PATH="$PATH:$HOME/miniconda3/bin"
-. ~/.machine_names_and_other_lists.sh
+
