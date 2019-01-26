@@ -63,6 +63,7 @@ PYTHON_BIN=$ENV/python26/bin/
 PATH=$PYTHON_BIN:$PATH:$HOME/bin:$HOME/scripts
 export PATH
 export TZ='/usr/share/zoneinfo/US/Central'
+. ~/miniconda3/etc/profile.d/conda.sh
 
 #--- Reminderscripts
 
@@ -137,3 +138,4 @@ export SCM_CHECK=true
 
 # Load Bash It
 #source $BASH_IT/bash_it.sh
+
