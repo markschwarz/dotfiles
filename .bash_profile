@@ -57,6 +57,12 @@ alias jup='cd ~/notebooks;jupyter notebook'
 alias jc3='python3 -m jupyter console'
 alias svim='vim -u ~/.vim/essential.vim'
 
+toastertimer() {
+     sleep $(echo "$1 * 60" | bc)
+     osascript -e 'display notification "Timer Done!" with title "Terminal" subtitle "Processing is complete" sound name "Frog"'
+}
+export -f toastertimer
+
 ENV=/mnt/env
 PATH=$PATH:$HOME/scripts
 PYTHON_BIN=$ENV/python26/bin/
@@ -64,6 +70,9 @@ PATH=$PYTHON_BIN:$PATH:$HOME/bin:$HOME/scripts
 export PATH
 export TZ='/usr/share/zoneinfo/US/Central'
 . ~/miniconda3/etc/profile.d/conda.sh
+
+export AWS_SESSION_TTL=12h
+export AWS_ASSUME_ROLE_TTL=11h
 
 #--- Reminderscripts
 
@@ -139,3 +148,19 @@ export SCM_CHECK=true
 # Load Bash It
 #source $BASH_IT/bash_it.sh
 
+# added by Miniconda3 4.5.12 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/s138414/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/Users/s138414/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/s138414/miniconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/Users/s138414/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
